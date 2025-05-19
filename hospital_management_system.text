@@ -1,0 +1,67 @@
+-- SQL script for creating tables and inserting data
+
+-- Table: Departments
+CREATE TABLE Departments (
+    DepartmentID INT PRIMARY KEY,
+    Name VARCHAR(50) NOT NULL,
+    Location VARCHAR(100)
+);
+
+-- Table: Doctors
+CREATE TABLE Doctors (
+    DoctorID INT PRIMARY KEY,
+    Name VARCHAR(50) NOT NULL,
+    Specialization VARCHAR(50),
+    Phone VARCHAR(15),
+    DepartmentID INT,
+    FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
+);
+
+-- Table: Patients
+CREATE TABLE Patients (
+    PatientID INT PRIMARY KEY,
+    Name VARCHAR(50) NOT NULL,
+    Age INT,
+    Gender VARCHAR(10),
+    Phone VARCHAR(15)
+);
+
+-- Table: Appointments
+CREATE TABLE Appointments (
+    AppointmentID INT PRIMARY KEY,
+    DoctorID INT,
+    PatientID INT,
+    Date DATE,
+    Time TIME,
+    Status VARCHAR(20),
+    FOREIGN KEY (DoctorID) REFERENCES Doctors(DoctorID),
+    FOREIGN KEY (PatientID) REFERENCES Patients(PatientID)
+);
+
+-- Insert dummy data for Departments
+INSERT INTO Departments VALUES (1, 'Cardiology', 'Building A');
+INSERT INTO Departments VALUES (2, 'Neurology', 'Building B');
+INSERT INTO Departments VALUES (3, 'Orthopedics', 'Building C');
+INSERT INTO Departments VALUES (4, 'Pediatrics', 'Building D');
+INSERT INTO Departments VALUES (5, 'General Medicine', 'Building E');
+
+-- Insert dummy data for Doctors
+INSERT INTO Doctors VALUES (1, 'Dr. Alice', 'Cardiologist', '1234567890', 1);
+INSERT INTO Doctors VALUES (2, 'Dr. Bob', 'Neurologist', '1234567891', 2);
+INSERT INTO Doctors VALUES (3, 'Dr. Charlie', 'Orthopedic', '1234567892', 3);
+INSERT INTO Doctors VALUES (4, 'Dr. Diana', 'Pediatrician', '1234567893', 4);
+INSERT INTO Doctors VALUES (5, 'Dr. Eve', 'General Physician', '1234567894', 5);
+
+-- Insert dummy data for Patients
+INSERT INTO Patients VALUES (1, 'John Doe', 25, 'Male', '9876543210');
+INSERT INTO Patients VALUES (2, 'Jane Smith', 30, 'Female', '9876543211');
+INSERT INTO Patients VALUES (3, 'Alice Brown', 40, 'Female', '9876543212');
+INSERT INTO Patients VALUES (4, 'Bob White', 35, 'Male', '9876543213');
+INSERT INTO Patients VALUES (5, 'Charlie Black', 50, 'Male', '9876543214');
+
+-- Insert dummy data for Appointments
+INSERT INTO Appointments VALUES (1, 1, 1, '2024-12-22', '10:00:00', 'Scheduled');
+INSERT INTO Appointments VALUES (2, 2, 2, '2024-12-23', '11:00:00', 'Completed');
+INSERT INTO Appointments VALUES (3, 3, 3, '2024-12-24', '12:00:00', 'Cancelled');
+INSERT INTO Appointments VALUES (4, 4, 4, '2024-12-25', '13:00:00', 'Scheduled');
+INSERT INTO Appointments VALUES (5, 5, 5, '2024-12-26', '14:00:00', 'Scheduled');
