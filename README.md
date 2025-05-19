@@ -3,6 +3,7 @@
 ![Project](https://img.shields.io/badge/Project-Hospital%20Management%20System-blue)
 ![SQL](https://img.shields.io/badge/Database-SQL-orange)
 ![ERD](https://img.shields.io/badge/Design-ERD-green)
+![ERD](https://img.shields.io/badge/Design-Complited-green)
 
 A structured database schema for a Hospital Management System, designed to efficiently manage patient records, doctor information, appointments, and billing processes. This project includes an Entity-Relationship Diagram (ERD) and corresponding SQL scripts to set up the database.
 
